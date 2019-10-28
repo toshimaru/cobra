@@ -1397,6 +1397,18 @@ func TestSetErr(t *testing.T) {
 	}
 }
 
+func TestPrint(t *testing.T) {
+	c := &Command{}
+	o := new(bytes.Buffer)
+	c.SetOut(o)
+	c.Print("xxx")
+
+	expected := "xxx"
+	if got := o.String(); got != expected {
+		t.Errorf("Expected %v, got %v", expected, got)
+	}
+}
+
 func TestSetIn(t *testing.T) {
 	c := &Command{}
 	c.SetIn(nil)
